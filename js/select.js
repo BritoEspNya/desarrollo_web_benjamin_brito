@@ -31,6 +31,7 @@ function defComunas() {
         newOption.textContent = comuna;
         comunaSelect.appendChild(newOption);
     })
+    comunaSelect.setAttribute("required", "required")
     comunaSelect.style.display = "block";
 }
 

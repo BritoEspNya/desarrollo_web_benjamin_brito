@@ -20,22 +20,22 @@
             <p>Donde?</p>
             <label>Region</label>
             <select id="regiones-select" onchange="defComunas()" required>
-                <option disabled selected value></option>
-                <option>I</option>
-                <option>II</option>
-                <option>III</option>
-                <option>IV</option>
-                <option>V</option>
-                <option>VI</option>
-                <option>VII</option>
-                <option>VIII</option>
-                <option>IX</option>
-                <option>X</option>
-                <option>XI</option>
-                <option>RM</option>
+                <option label="Elegir" disabled selected value></option>
+                <option label="I">I</option>
+                <option label="II">II</option>
+                <option label="III">III</option>
+                <option label="IV">IV</option>
+                <option label="V">V</option>
+                <option label="VI">VI</option>
+                <option label="VII">VII</option>
+                <option label="VIII">VIII</option>
+                <option label="IX">IX</option>
+                <option label="X">X</option>
+                <option label="XI">XI</option>
+                <option label="RM">RM</option>
             </select>
             <label>Comuna</label>
-            <select id="comunas-select" style="display: none;" required></select>
+            <select id="comunas-select" style="display: none;"></select>
             <label>Sector</label>
             <input type="text" maxlength="100">
             <p>Quién organiza?</p>
@@ -48,13 +48,13 @@
             <div id="contacto-div">
                 <label>Contacto</label>
                 <select id="contacto-select" onchange="contacto()">
-                    <option disabled selected value></option>
-                    <option>Whatsapp</option>
-                    <option>Telegram</option>
-                    <option>X</option>
-                    <option>Instagram</option>
-                    <option>Tiktok</option>
-                    <option>Otra</option>
+                    <option label="Elegir" disabled selected value></option>
+                    <option label="Whatsapp">Whatsapp</option>
+                    <option label="Telegram">Telegram</option>
+                    <option label="X">X</option>
+                    <option label="Instagram">Instagram</option>
+                    <option label="TikTok">Tiktok</option>
+                    <option label="Otra">Otra</option>
                 </select>
             </div>
             <p>Dónde?</p>
@@ -66,16 +66,17 @@
             <input  type="text" style="height: 100px; width: 250px;">
             <label>Tema</label>
             <select id="temas-select" onchange="otroTema()" required>
-                <option>Música</option>
-                <option>Deporte</option>
-                <option>Ciencias</option>
-                <option>Religión</option>
-                <option>Política</option>
-                <option>Tecnología</option>
-                <option>Juegos</option>
-                <option>Baile</option>
-                <option>Comida</option>
-                <option>Otro</option>
+                <option label="Elegir" disabled selected value></option>
+                <option label="Música">Música</option>
+                <option label="Deporte">Deporte</option>
+                <option label="Ciencias">Ciencias</option>
+                <option label="Religión">Religión</option>
+                <option label="Política">Política</option>
+                <option label="Tecnología">Tecnología</option>
+                <option label="Juegos">Juegos</option>
+                <option label="Baile">Baile</option>
+                <option label="Comida">Comida</option>
+                <option label="Otro">Otro</option>
             </select>
             <input id="tema-otro-input" type="text" style="display: none;">
             <label>Foto</label>
