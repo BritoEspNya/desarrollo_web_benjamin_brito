@@ -18,6 +18,7 @@ const comunas = new Map([
 ])
 
 let contadorImagenes = 1;
+let contadorContacto = 1;
 
 function defComunas() {
     const regionSelect = document.getElementById("regiones-select");
@@ -31,6 +32,23 @@ function defComunas() {
         comunaSelect.appendChild(newOption);
     })
     comunaSelect.style.display = "block";
+}
+
+function contacto() {
+    if (contadorContacto <= 5) {
+        let contactoDiv = document.getElementById("contacto-div");
+        let newContactoInput = document.createElement('input');
+        newContactoInput.setAttribute("type", "text");
+        newContactoInput.setAttribute("minlength", "4");
+        newContactoInput.setAttribute("maxlength", "50");
+        newContactoInput.setAttribute("placeholder", document.getElementById("contacto-select").value);
+        contactoDiv.appendChild(newContactoInput);
+        contactoDiv.appendChild(document.getElementById("contacto-select"));
+        contadorContacto++;
+        if(contadorContacto > 5) {
+            document.getElementById("contacto-select").style.display = "none";
+        }
+    } 
 }
 
 function otroTema() {

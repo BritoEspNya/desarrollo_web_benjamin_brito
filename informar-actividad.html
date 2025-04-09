@@ -42,8 +42,18 @@
         <input type="email" required>
         <label>Numero de Celular</label>
         <input type="tel">
-        <label>Contacto????????</label>
-
+        <div id="contacto-div">
+            <label>Contacto</label>
+            <select id="contacto-select" onchange="contacto()">
+                <option disabled selected value></option>
+                <option>Whatsapp</option>
+                <option>Telegram</option>
+                <option>X</option>
+                <option>Instagram</option>
+                <option>Tiktok</option>
+                <option>Otra</option>
+            </select>
+        </div>
         <p>Dónde?</p>
         <label>Hora de inicio</label>
         <input type="datetime-local" required>
