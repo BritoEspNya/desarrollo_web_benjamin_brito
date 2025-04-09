@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <tittle>Estadisticas</tittle>
+    <title>Estadisticas</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div>
-        <h1>Estadisticas</h1>
-    </div>
-    <div id="menu" class="menu-contenedor">
+    <div id="menu" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.html">Portada</a>
         <a href="informar-actividad.html">Agregar</a>
         <a href="listado-actividades.html">Actividades</a>
     </div>
-    <div id="estadisticas-div">
-        <div id="grafico-1">
-            <h3>Actividades por día</h3>
-            <img src="/resources/graphs/actividades-semana-linea.png">
+    <span onclick="openNav()">Menu</span>
+    <div id="main">
+        <div>
+            <h1>Estadisticas</h1>
         </div>
-        <div id="grafico-2">
-            <h3>Actividades por tipo</h3>
-            <img src="/resources/graphs/actividades-tipo-torta.png">
-        </div>
-        <div id="grafico-3">
-            <h3>Actividades por la mañana, tarde y noche en el año</h3>
-            <img src="/resources/graphs/actividades-meses-barra.png">
+        <div id="estadisticas-div">
+            <div id="grafico-1">
+                <h3>Actividades por día</h3>
+                <img src="/resources/graphs/actividades-semana-linea.png">
+            </div>
+            <div id="grafico-2">
+                <h3>Actividades por tipo</h3>
+                <img src="/resources/graphs/actividades-tipo-torta.png">
+            </div>
+            <div id="grafico-3">
+                <h3>Actividades por la mañana, tarde y noche en el año</h3>
+                <img src="/resources/graphs/actividades-meses-barra.png">
+            </div>
         </div>
     </div>
-    <a href="index.html">Volver</a>
+    
+    <a href="index.html">Portada</a>
+    <script src="/js/sidenav.js"></script>
 </body>
 </html>
