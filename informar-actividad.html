@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <tittle>Agregar actividad</tittle>
+</head>
+<body>
+    <div>
+        <h1>Agregar actividad</h1>
+    </div>
+    <div id="menu" class="menu-contenedor">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Portada</a>
+        <a href="listado-actividades.html">Actividades</a>
+        <a href="estadisticas.html">Estadisticas</a>
+    </div><br>
+    <form>
+        <p>Donde?</p>
+        <label>Region</label>
+        <select id="regiones-select" onchange="defComunas()" required>
+            <option disabled selected value></option>
+            <option>I</option>
+            <option>II</option>
+            <option>III</option>
+            <option>IV</option>
+            <option>V</option>
+            <option>VI</option>
+            <option>VII</option>
+            <option>VIII</option>
+            <option>IX</option>
+            <option>X</option>
+            <option>XI</option>
+            <option>RM</option>
+        </select>
+        <label>Comuna</label>
+        <select id="comunas-select" style="display: none;" required></select>
+        <label>Sector</label>
+        <input type="text" maxlength="100">
+        <p>Quién organiza?</p>
+        <label>Nombre</label>
+        <input type="text" maxlength="200" required>
+        <label>Email</label>
+        <input type="email" required>
+        <label>Numero de Celular</label>
+        <input type="tel">
+        <label>Contacto????????</label>
+
+        <p>Dónde?</p>
+        <label>Hora de inicio</label>
+        <input type="datetime-local" required>
+        <label>Hora de termino</label>
+        <input type="datetime-local">
+        <label>Descripción</label>
+        <input  type="text" style="height: 100px; width: 250px;">
+        <label>Tema</label>
+        <select id="temas-select" onchange="otroTema()" required>
+            <option>Música</option>
+            <option>Deporte</option>
+            <option>Ciencias</option>
+            <option>Religión</option>
+            <option>Política</option>
+            <option>Tecnología</option>
+            <option>Juegos</option>
+            <option>Baile</option>
+            <option>Comida</option>
+            <option>Otro</option>
+        </select>
+        <input id="tema-otro-input" type="text" style="display: none;">
+        <label>Foto</label>
+        <div id="imagenes-div">
+            <input type="file" onchange="otraImagen()" required>
+        </div>
+    </form>
+    <button onclick="window.confirm('¿Está seguro que desea agregar esta actividad?')">Agregar esta actividad</button>
+    <script src="./js/select.js"></script>
+</body>
+</html>
