@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        {% block css %}{% endblock %}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto&display=swap"
+        rel="stylesheet"
+        />
+        <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+        />
+    </head>
+    <body>
+        <div class="navbar">
+            <h1>Actividades!</h1>
+            <a class="navbar-page" href="{{ url_for('index')}}">Inicio</a>
+            <a class="navbar-page" href="{{ url_for('actividades')}}">Actividades</a>
+            <a class="navbar-page" href="{{ url_for('formulario')}}">Crear</a>
+            <a class="navbar-page" href="{{ url_for('estadisticas')}}">Estadisticas</a>
+        </div>
+
+    </body>
+    <section class="main-container">
+        {% block content %}{% endblock %} {% block javascript %} {% endblock %}
+    </section>
+</html>

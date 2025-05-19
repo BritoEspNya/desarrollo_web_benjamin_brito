@@ -1,0 +1,19 @@
+#act-list {
+    width: 70%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.act-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background: white;
+    border: .2em solid var(--black-color);
+    border-radius: .25em;
+    box-shadow: .2em .2em 0px 0px black;
+    margin: auto;
+    margin-bottom: 2%;
+    width: 80%;
+}

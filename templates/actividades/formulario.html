@@ -1,0 +1,95 @@
+{% extends 'actividades/base.html' %}
+
+{% block css %}
+    <link
+        rel="stylesheet"
+        href="{{url_for('static', filename='css/crear.css')}}"
+    />
+{% endblock %}
+
+{% block content %}
+    <div class="act-user">
+        <h1>Agrega tu actividad!</h1>
+        <form id="act-form" action="{{url_for('post_act')}}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Información del lugar</legend>
+                <label for="region_select">Selecciona una región </label>
+                <select id="region_select" name="act-region" required>
+                    <option value="">-- Selecciona una Región --</option>
+                    {% for region_id, region_nombre in regiones %}
+                        <option value="{{region_id}}">{{region_nombre}}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <label for="comuna_select">Selecciona una comuna </label>
+                <select id="comuna_select" name="act-comuna" disabled required>
+                    <option value="">-- Selecciona una comuna --</option>
+                </select>
+                <label for="sector">Sector: </label>
+                <input type="text" maxlength="100" id="sector" name="act-sector">
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Datos del organizador</legend>  
+                <label for="organizador">Nombre del organizador</label>
+                <input type="text" maxlength="200" id="organizador" name="act-organizador" required>
+                <label for="email">Email</label>
+                <input type="email" maxlength="100" id="email" name="act-email" required>
+                <label for="telefono">Número de celular</label> 
+                <input type="tel" id="telefono" name="act-tel">
+                <label for="redes_select">Contactar por</label>
+                <select id="redes_select" name="act-redes">
+                    <option value="">-- Selecciona una red --</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="telegram">Telegram</option>
+                    <option value="x">X</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="otra">Otra</option>
+                </select>
+                <div id="contacto-input" style="display: none;">
+                    <label for="contacto">ID de contacto o URL:</label>
+                    <input type="text" id="contacto" minlength="4" maxlength="50">
+                    <button id="agregar_social-btn" type="button">Agregar</button>
+                </div>
+                <div id="contacto-redes"></div>
+            </fieldset>
+            <br>
+            <fieldset>
+                <legend>Sobre la actividad</legend>
+                <label for="dia_hora_inicio">Día y Hora de incio</label>
+                <input type="datetime-local" id="dia_hora_inicio" name="act-dia_hora_inicio" required>
+                <label for="dia_hora_termino">Día y hora de termino</label>
+                <input type="datetime-local" id="dia_hora_termino" name="act-dia_hora_termino">
+                <label for="desc">Descripción</label>
+                <input type="text" id="desc" name="act-desc">
+                <label for="temas_select">Temas</label>
+                <select id="temas_select">
+                    <option value="">-- Selecciona un tema --</option>
+                    <option value="música">Música</option>
+                    <option value="deporte">Deporte</option>
+                    <option value="ciencias">Ciencias</option>
+                    <option value="religión">Religión</option>
+                    <option value="política">Política</option>
+                    <option value="tecnología">Tecnología</option>
+                    <option value="juegos">Juegos</option>
+                    <option value="baile">Baile</option>
+                    <option value="comida">Comida</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <div id="otro_tema-div" style="display: none;">
+                    <label for="otro_tema-input">Otro tema: </label>
+                    <input type="text" id="otro_tema-input" minlength="3" maxlength="15">
+                </div>
+                <button id="agregar_tema-btn" type="button">Agregar</button>
+                <div id="temas-div"></div>
+                <label for="fotos">Fotos</label>
+                <input type="file" id="fotos" name="act-fotos" multiple>
+            </fieldset>               
+            <button id="submit-act-btn">Agregar esta actividad!</button>
+        </form>
+    </div>
+{% endblock content %}
+{% block javascript %}
+    <script lang="javascript" src="{{url_for('static', filename='js/actividades.js')}}"></script>
+{% endblock javascript %}

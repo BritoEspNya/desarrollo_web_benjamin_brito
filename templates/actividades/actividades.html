@@ -1,0 +1,42 @@
+{% extends 'actividades/base.html' %}
+
+{% block css %}
+    <link
+        rel="stylesheet"
+        href="{{url_for('static', filename='css/actividades.css')}}"
+    />
+{% endblock %}
+
+{% block content %}
+    <div class="act-list">
+        {% if data %}
+            {% for act in data %}
+                <div class="act-container">
+                    <p>{{act.comuna}}, </p>
+                    <p>{{act.sector}}, </p>
+                    <p>{{act.nombre}}, </p>
+                    <p>{{act.email}}, </p>
+                    <p>{{act.celular}}, </p>
+                    <p>{{act.dia_hora_inicio}}, </p>
+                    <p>{{act.dia_hora_termino}}, </p>
+                    <p>{{act.descripcion}}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="pagination">
+        {% if current_pagina > 1 %}
+            <a href="{{ url_for('actividades', pagina=current_pagina - 1) }}">Anterior</a>
+        {% endif %}
+
+        {% for page_num in range(1, total_paginas + 1) %}
+            <a href="{{ url_for('actividades', pagina=page_num) }}" {% if page_num == current_page %}class="active"{% endif %}>{{ page_num }}</a>
+        {% endfor %}
+
+        {% if current_pagina < total_paginas %}
+            <a href="{{ url_for('actividades', pagina=current_pagina + 1) }}">Siguiente</a>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('index')}}">Inicio</a>
+    <a href="{{ url_for('actividades')}}">Actividades</a>
+{% endblock %}

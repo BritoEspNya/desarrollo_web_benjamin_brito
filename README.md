@@ -1,0 +1,1 @@
+Detalle: Al agregar una actividad mediante el formulario, rellenar todos los campos parece funcionar con normalidad, sin embargo, omitir campos opcionales genera errores. Particularmente, la base de datos no logra recibir una hora de termino vacia.
