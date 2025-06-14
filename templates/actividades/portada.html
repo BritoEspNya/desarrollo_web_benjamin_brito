@@ -12,15 +12,17 @@
     <div class="act-list">
         {% if data %}
             {% for act in data %}
-                <div class="act-container">
-                    <p>{{act.comuna}}, </p>
-                    <p>{{act.sector}}, </p>
-                    <p>{{act.nombre}}, </p>
-                    <p>{{act.email}}, </p>
-                    <p>{{act.celular}}, </p>
-                    <p>{{act.dia_hora_inicio}}, </p>
-                    <p>{{act.dia_hora_termino}}, </p>
-                    <p>{{act.descripcion}}</p>
+                <div>
+                    <div class="act-container">
+                        <p>{{act.comuna}}, </p>
+                        <p>{{act.sector}}, </p>
+                        <p>{{act.nombre}}, </p>
+                        <p>{{act.email}}, </p>
+                        <p>{{act.celular}}, </p>
+                        <p>{{act.dia_hora_inicio}}, </p>
+                        <p>{{act.dia_hora_termino}}, </p>
+                        <p>{{act.descripcion}}</p>
+                    </div>
                 </div>
             {% endfor %}
         {% endif %}

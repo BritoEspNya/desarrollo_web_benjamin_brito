@@ -1,12 +1,16 @@
 {
     "get_actividades": "SELECT * FROM actividad ORDER BY id DESC LIMIT %s",
+    "get_all_actividades": "SELECT * FROM actividad",
     "get_actividades_paginadas": "SELECT * FROM actividad ORDER BY id DESC LIMIT %s OFFSET %s",
     "crear_actividad": "INSERT INTO actividad (comuna_id, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+    "get_comentarios_by_actId": "SELECT nombre, texto, fecha FROM comentario WHERE actividad_id = %s",
+    "crear_comentario": "INSERT INTO comentario (nombre, texto, fecha, actividad_id) VALUES (%s, %s, %s, %s)",
     "crear_tema": "INSERT INTO actividad_tema (tema, glosa_otro, actividad_id) VALUES (%s, %s, %s)",
     "crear_contacto": "INSERT INTO contactar_por (nombre, identificador, actividad_id) VALUES (%s, %s, %s)",
     "crear_foto": "INSERT INTO foto (ruta_archivo, nombre_archivo, actividad_id) VALUES (%s, %s, %s)",
     "get_comunas_by_region": "SELECT id, nombre FROM comuna WHERE region_id = %s ORDER BY nombre ASC",
     "get_comuna_by_id": "SELECT nombre FROM comuna WHERE id = %s",
     "get_regiones": "SELECT * FROM region ORDER BY id ASC",
-    "get_conteo_actividades": "SELECT COUNT(*) FROM actividad"
+    "get_conteo_actividades": "SELECT COUNT(*) FROM actividad",
+    "get_temas": "SELECT * FROM actividad_tema"
 }

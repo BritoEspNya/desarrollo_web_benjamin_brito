@@ -1,5 +1,37 @@
 {% extends 'actividades/base.html' %}
 
+{% block css %}
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/estadisticas.css') }}"
+    />
+{% endblock %}
+
 {% block content %}
-    <p>no abemus estadisticas :P saludos</p>
+<div class="stats-container">
+    <figure class="highcharts-figure">
+        <div id="act-porDia-container"></div>
+        <p class="highcharts-description">
+            El anterior grafico presenta el numero de actividades por dia!
+        </p>
+    </figure>
+    <figure class="highcharts-figure">
+        <div id="act-porTipo-container"></div>
+        <p class="highcharts-description">
+            El anterior grafico presenta el tipo de actividades totales!
+        </p>
+    </figure>
+    <figure class="highcharts-figure">
+        <div id="act-porHorario-container"></div>
+        <p class="highcharts-description">
+            El anterior grafico presenta los horarios de actividades por mes!
+        </p>
+    </figure>
+</div>
+<a href="{{ url_for('index')}}">Inicio</a>
+{% endblock %}
+
+{% block javascript %}
+<script lang="javascript" src="https://code.highcharts.com/highcharts.js"></script>
+<script lang="javascript" src="{{url_for('static', filename='js/estadisticas.js')}}"></script>
 {% endblock %}

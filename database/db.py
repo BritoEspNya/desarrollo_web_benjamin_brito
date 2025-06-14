@@ -1,5 +1,6 @@
 import pymysql
 import json
+from datetime import time
 
 DB_NAME = "tarea2"
 DB_USERNAME = "cc5002"
@@ -29,7 +30,7 @@ def get_conn():
 def get_actividades():
 	conn = get_conn()
 	cursor = conn.cursor()
-	cursor.execute(QUERY_DICT["get_actividades"], (5,))
+	cursor.execute(QUERY_DICT["get_actividades"], (5, ))
 	actividades = cursor.fetchall()
 	return actividades
 
@@ -65,6 +66,13 @@ def get_comuna_by_id(comuna_id):
 	comuna = cursor.fetchone()
 	return comuna
 
+def get_comentarios_by_actId(actividad_id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_comentarios_by_actId"], (actividad_id,))
+	comentarios = cursor.fetchall()
+	return comentarios
+
 def crear_actividad(comuna_id, sector, organizador, email, celular, dia_hora_inicio, dia_hora_termino, descripcion, temas, redes, imgs_dict):
 	conn = get_conn()
 	cursor = conn.cursor()
@@ -80,6 +88,49 @@ def crear_actividad(comuna_id, sector, organizador, email, celular, dia_hora_ini
 	for filepath in imgs_dict:
 		cursor.execute(QUERY_DICT["crear_foto"], (filepath, imgs_dict[filepath], actividad_id))
 	conn.commit()
+
+def crear_comentario(nombre, comentario, fecha, actividad_id):
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["crear_comentario"], (nombre, comentario, fecha, actividad_id))
+	conn.commit()
+
+def get_conteo_actividades_by_horario():
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_all_actividades"])
+	actividades = cursor.fetchall()
+	conteo_actividades_by_horario = {mes: [0, 0, 0] for mes in range(1, 13)}
+	for actividad in actividades:
+		_, _, _, _, _, _, dia_hora_inicio, _, _ = actividad
+		if dia_hora_inicio.time() < time(12, 0, 0):
+			conteo_actividades_by_horario[dia_hora_inicio.month][0] += 1
+		elif dia_hora_inicio.time() < time(16, 0, 0):
+			conteo_actividades_by_horario[dia_hora_inicio.month][1] += 1
+		else:
+			conteo_actividades_by_horario[dia_hora_inicio.month][2] += 1
+	return conteo_actividades_by_horario
+
+def get_conteo_actividades_by_tipo():
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_temas"])
+	temas = cursor.fetchall()
+	conteo_actividades_by_tipo = {'música': 0, 'deporte': 0, 'ciencias': 0, 'religión': 0, 'política': 0, 'tecnología': 0, 'juegos': 0, 'baile': 0, 'comida': 0, 'otro': 0}
+	for tema in temas:
+		_, t, _, _ = tema
+		conteo_actividades_by_tipo[t] += 1
+	return conteo_actividades_by_tipo
+
+def get_conteo_actividades_por_dia():
+	conn = get_conn()
+	cursor = conn.cursor()
+	cursor.execute(QUERY_DICT["get_all_actividades"])
+	actividades = cursor.fetchall()
+	conteo_actividades_por_dia = {}
+	for actividad in actividades:
+		_, _, _, _, _, _, dia_hora_inicio, _, _ = actividad
+		conteo_actividades_por_dia[dia_hora_inicio.weekday()] = conteo_actividades_por_dia.get(dia_hora_inicio.weekday(), 0) + 1
+	return conteo_actividades_por_dia
+		
 	
-
-

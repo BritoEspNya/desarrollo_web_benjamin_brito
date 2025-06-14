@@ -79,3 +79,6 @@ def validate_activity(act_region, act_comuna,act_sector, act_organizador, act_em
             isValid = False
 
     return isValid and validate_email(act_email) and validate_tel(act_tel)
+
+def validate_comment(name, comment):
+    return  (len(name) >= 3 and len(name) <= 80 and len(comment) >= 5)

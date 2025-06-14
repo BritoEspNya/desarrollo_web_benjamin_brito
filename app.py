@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, session, jsonify
-from utils.validations import  validate_activity
+from flask_cors import cross_origin
+from utils.validations import  validate_activity, validate_comment
 from database import db
 from werkzeug.utils import secure_filename
 import hashlib
@@ -7,6 +8,8 @@ import filetype
 import os
 import json
 import sys
+import time
+from datetime import datetime
 
 UPLOAD_FOLDER = 'static/uploads'
 
@@ -42,7 +45,13 @@ def actividades():
     actividades, total_paginas = db.get_actividades_paginadas(pagina)
     data = []
     for act in actividades:
-        _, comuna_id, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion = act
+        actividad_id, comuna_id, sector, nombre, email, celular, dia_hora_inicio, dia_hora_termino, descripcion = act
+        
+        comentarios = db.get_comentarios_by_actId(actividad_id)
+        comentarios_data = []
+        for comentario in comentarios:
+            comentario_nombre, comentario_texto, comentario_timestamp = comentario  
+            comentarios_data.append({"nombre": comentario_nombre, "texto": comentario_texto, "timestamp": comentario_timestamp})
 
         data.append({
             "comuna": db.get_comuna_by_id(comuna_id),
@@ -52,7 +61,9 @@ def actividades():
             "celular": celular,
             "dia_hora_inicio": dia_hora_inicio,
             "dia_hora_termino": dia_hora_termino,
-            "descripcion": descripcion
+            "descripcion": descripcion,
+            "actividad_id": actividad_id,
+            "comentarios": comentarios_data
         })
 
     return render_template("actividades/actividades.html", data=data, current_pagina=pagina, total_paginas=total_paginas)
@@ -113,6 +124,29 @@ def post_act():
         return redirect(url_for("index"))
     else:
         return redirect(url_for("formulario"))
+
+@app.route("/post-comment", methods=["POST"])
+def post_comment():
+    comment_name = request.form.get("nombreUsuario")
+    comment_text = request.form.get("textoComentario")
+    fecha = datetime.now()
+    act_id = request.form.get("comment-act-id")
+
+    if validate_comment(comment_name, comment_text):
+        db.crear_comentario(comment_name, comment_text, fecha, act_id)
+        return redirect(url_for("actividades"))
+    else:
+        return redirect(url_for("index"))
+
+
+@app.route("/get-estadisticas-data", methods=["GET"])
+@cross_origin(origin="127.0.0.1", supports_credentials=True)
+def get_estadisticas_data():
+    conteo_por_tipo = db.get_conteo_actividades_by_tipo()
+    conteo_por_horario = db.get_conteo_actividades_by_horario()
+    conteo_por_dia = db.get_conteo_actividades_por_dia()
+    time.sleep(5)
+    return jsonify([conteo_por_dia, conteo_por_tipo, conteo_por_horario])
 
 
 if __name__ == "__main__":

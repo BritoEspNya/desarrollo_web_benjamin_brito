@@ -11,15 +11,23 @@
     <div class="act-list">
         {% if data %}
             {% for act in data %}
-                <div class="act-container">
-                    <p>{{act.comuna}}, </p>
-                    <p>{{act.sector}}, </p>
-                    <p>{{act.nombre}}, </p>
-                    <p>{{act.email}}, </p>
-                    <p>{{act.celular}}, </p>
-                    <p>{{act.dia_hora_inicio}}, </p>
-                    <p>{{act.dia_hora_termino}}, </p>
-                    <p>{{act.descripcion}}</p>
+                <div class="act-div" data-act-id={{act.actividad_id}}>
+                    <div class="act-container">
+                        <p>{{act.comuna}}, </p>
+                        <p>{{act.sector}}, </p>
+                        <p>{{act.nombre}}, </p>
+                        <p>{{act.email}}, </p>
+                        <p>{{act.celular}}, </p>
+                        <p>{{act.dia_hora_inicio}}, </p>
+                        <p>{{act.dia_hora_termino}}, </p>
+                        <p>{{act.descripcion}}</p>
+                        <button class="comment-btn">Comentar</button>
+                    </div>
+                    <div class="comments-container">
+                        {% for comment in act.comentarios %}
+                        <p>{{comment.nombre}}: {{comment.texto}} ({{comment.timestamp}})</p>
+                        {% endfor %}
+                    </div>
                 </div>
             {% endfor %}
         {% endif %}
@@ -39,4 +47,8 @@
     </div>
     <a href="{{ url_for('index')}}">Inicio</a>
     <a href="{{ url_for('actividades')}}">Actividades</a>
+{% endblock %}
+
+{% block javascript %}
+<script lang="javascript" src="{{url_for('static', filename='js/listado_actividades.js')}}"></script>
 {% endblock %}
