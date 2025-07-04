@@ -1,0 +1,18 @@
+<div th:fragment="activity-box(act)" class="act-container">
+  <div class="act-header">
+    <div class="act-header-text">
+      <h2 class="act-name" th:text="${act['act_name']}"></h2>
+      <p class="act-score" th:text="${act['act_average_score']}"></p>
+    </div>
+  </div>
+  <div class="act-content">
+    <p class="act-theme" th:text="${act['act_themes']}"></p>
+    <p class="act-start" th:text="${act['act_start']}"></p>
+    <p class="act-sector" th:text="${act['act_sector']}"></p>
+  </div>
+  <div class="act-actions">
+    <button
+      class="evaluar-btn"
+      th:data-activity-id="${act['id']}"
+      data-activity-name="${act['act_name']}"> Evaluar </button>
+</div>

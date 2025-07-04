@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8" />
+    <title>Actividades</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/actividades.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <div th:replace="~{fragments/nav :: navbar}"></div>
+
+    <section class="main-container">
+      <!-- Activities List -->
+        <div id="act-list">
+            <div th:each="act : ${data}">
+            <div
+                th:replace="~{fragments/activity_box :: activity-box(${act})}"
+            ></div>
+            </div>
+        </div>
+
+    <!-- Scripts -->
+    <script th:src="@{/js/actividades.js}"></script>
+  </body>
+</html>

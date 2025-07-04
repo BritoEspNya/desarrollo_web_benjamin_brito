@@ -1,0 +1,2 @@
+Observación: A pesar de no ser utilizados, se crearon ApiController y ApiService para futuras implementaciones en caso de ser necesarias.
+Observación: La informacion recopilada de la base de datos para cada actividad esta colocada en el fragment sin mayor diseño ni orden. (la info está pero no de la forma más "bonita")

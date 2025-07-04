@@ -1,0 +1,82 @@
+.main-container {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+#act-list {
+  width: 70%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.act-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  padding: 0 1rem;
+  background: white;
+  border: 0.2em solid var(--black-color);
+  border-radius: 0.25em;
+  box-shadow: 0.2em 0.2em 0px 0px black;
+  margin: 0em 1em 2em 0em;
+}
+
+.act-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0.1em solid var(--black-color);
+  gap: 0.5rem;
+  padding: 1em 0;
+}
+
+.act-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 5;
+}
+
+.act-header-text > * {
+  margin: 0;
+}
+
+.act-header > * {
+  margin: 0;
+}
+
+.title {
+  margin-top: 1rem;
+}
+
+.act-name {
+  margin-bottom: 1rem;
+  color: var(--pink-color);
+  font-weight: 600;
+}
+
+.act-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.act-text {
+  flex-grow: 5;
+}
+
+
+.like-number {
+  font-weight: 600;
+  text-align: center;
+  padding: 1em 0;
+}
+
+#map {
+  height: 180px;
+  width: 100%;
+  border: 0.2em solid var(--black-color);
+  border-radius: 0.25em;
+  margin: 0.5em auto;
+  z-index: 10;
+}
